@@ -13,7 +13,7 @@ import java.text.ParseException;
 import java.util.HashMap;
 public class Main extends JComponent
 {
-    private static String version = "210606";
+    private static String version = "210607";
     private String nflRandomWeekURL = "https://www.covers.com/sports/nfl/matchups";
     private XSSFWorkbook sportDataWorkbook;
     private String deskTopPath = System.getProperty("user.home") + "/Desktop";/* User's desktop path */
