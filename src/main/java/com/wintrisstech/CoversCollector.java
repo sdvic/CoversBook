@@ -2,16 +2,15 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210607
+ * version 210608
  * Builds data event id array and calendar date array
  *******************************************************************/
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import java.util.ArrayList;
 import java.util.HashMap;
-public class DataCollector
+class DataCollector
 {
-
     private String thisMatchupID;
     private String homeTeam;
     private String awayTeam;

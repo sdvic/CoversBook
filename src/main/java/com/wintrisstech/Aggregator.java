@@ -2,15 +2,13 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210607
+ * version 210608
  *******************************************************************/
+import org.apache.poi.ss.usermodel.CellCopyPolicy;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.xssf.usermodel.XSSFColor;
-import org.apache.poi.xssf.usermodel.XSSFFont;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.xssf.usermodel.*;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
@@ -79,7 +77,7 @@ public class Aggregator
         atsAway = atsAwaysMap.get(dataEventID);
         ouOver = ouOversMap.get(dataEventID);
         ouUnder = ouUndersMap.get(dataEventID);
-        out.println("................................ "+ (eventIndex -1) + " " + dataEventID + " " + homeTeam + " " + awayTeam + " " + thisMatchupDate + " " + atsHome + " " + atsAway + " " + ouOver + " " + ouUnder);
+        out.println("................................ "+ (eventIndex -5) + " " + dataEventID + " " + homeTeam + " " + awayTeam + " " + thisMatchupDate + " " + atsHome + " " + atsAway + " " + ouOver + " " + ouUnder);
         updateSheet.getRow(eventIndex).createCell(0);
         updateSheet.getRow(eventIndex).getCell(0).setCellStyle(myStyle);
         updateSheet.getRow(eventIndex).getCell(0).setCellValue(awayTeam + " @ " + homeTeam);
@@ -98,6 +96,18 @@ public class Aggregator
         updateSheet.getRow(eventIndex).createCell(66);
         updateSheet.getRow(eventIndex).getCell(66).setCellStyle(myStyle);
         updateSheet.getRow(eventIndex).getCell(66).setCellValue(ouUnder);
+        XSSFRow srcRow = sportDataWorkbook.getSheet("Sheet1").getRow(0);//copyRowFrom() workaround
+        XSSFRow destRow = (XSSFRow) updateSheet.createRow(1);
+        destRow.copyRowFrom(srcRow, new CellCopyPolicy());
+        srcRow = sportDataWorkbook.getSheet("Sheet1").getRow(1);
+        destRow = (XSSFRow) updateSheet.createRow(2); //this works
+        destRow.copyRowFrom(srcRow, new CellCopyPolicy());
+        srcRow = sportDataWorkbook.getSheet("Sheet1").getRow(2);
+        destRow = (XSSFRow) updateSheet.createRow(3); //this works
+        destRow.copyRowFrom(srcRow, new CellCopyPolicy());
+        updateSheet.createRow(0);
+        updateSheet.getRow(0).createCell(0);
+        updateSheet.getRow(0).getCell(0).setCellValue("Updated Sport Data Sheet");
         return sportDataWorkbook;
     }
     public void setThisWeekHomeTeamsMap(HashMap<String, String> thisWeekHomeTeamsMap){this.thisWeekHomeTeamsMap = thisWeekHomeTeamsMap;}
