@@ -11,7 +11,7 @@ import static org.jsoup.Jsoup.connect;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210608
+ * version 210609
  * Reads/cleans input URL and returns all Elements and Document
  *******************************************************************/
 public class WebSiteReader

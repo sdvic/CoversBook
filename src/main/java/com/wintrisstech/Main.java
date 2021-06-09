@@ -2,11 +2,12 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2021 Dan Farris
- * version 210608
+ * version 210609
  * * Launch with Covers.command
  *******************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jsoup.select.Elements;
+
 import javax.swing.*;
 import java.io.IOException;
 import java.text.ParseException;
@@ -37,18 +38,17 @@ public class Main extends JComponent
     private void getGoing() throws IOException
     {
         String thisSeason;// = JOptionPane.showInputDialog("NFL Season (2yyy)?");
-        thisSeason = "2020";
         thisWeek = "2020-09-10";
-        nflHistoryElements = webSiteReader.readCleanWebsite("https://www.covers.com/sports/nfl/matchups?selectedDate=" + thisSeason);//Has all NFL season beginning date history and this season year info from https://www.covers.com/sports/nfl/matchups?selectedDate=thisSeasonYear
-        dataCollector.collectAllSeasonDates(nflHistoryElements);//Builds a String array of all past and current NFL season year dates available from Covers.com
+        String seasonCode = "2020-2-2";
+        Elements nflSeasonElements = webSiteReader.readCleanWebsite("https://www.covers.com/sports/nfl/matchups?selectedDate=" + seasonCode);//Has all NFL season dates/week numbers for this season year from https://www.covers.com/sports/nfl/matchups?selectedDate=seasonCode
         thisWeekElements = webSiteReader.readCleanWebsite("https://www.covers.com/sports/nfl/matchups?selectedDate=" + thisWeek);//Get all of this week's games info
-        dataCollector.collectThisSeasonWeeks(nflHistoryElements);
+        dataCollector.collectThisSeason(nflSeasonElements);
         dataCollector.collectThisWeekMatchups(thisWeekElements);
         sportDataWorkbook = sportDataReader.readSportData();
-        int i =3;
+        int matchupIndex =3;
         for (String s : dataCollector.getThisWeekMatchupIDs())
         {
-            String thisMatchupID = dataCollector.getThisWeekMatchupIDs().get(i-3);//Get this matchup ID...used as key for all data retrieval
+            String thisMatchupID = dataCollector.getThisWeekMatchupIDs().get(matchupIndex-3);//Get this matchup ID...used as key for all data retrieval
             thisMatchupConsensusElements = webSiteReader.readCleanWebsite("https://contests.covers.com/consensus/matchupconsensusdetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + thisMatchupID);
             dataCollector.collectConsensusData(thisMatchupConsensusElements, thisMatchupID);
             aggregator.setThisWeekAwayTeamsMap(dataCollector.getThisWeekAwayTeamsMap());
@@ -58,10 +58,10 @@ public class Main extends JComponent
             aggregator.setAtsAwaysMap(dataCollector.getAtsAwaysMap());
             aggregator.setOuOversMap(dataCollector.getOuOversMap());
             aggregator.setOuUndersMap(dataCollector.getOuUndersMap());
-            aggregator.buildSportDataUpdate(sportDataWorkbook, thisMatchupID, i);
+            aggregator.buildSportDataUpdate(sportDataWorkbook, thisMatchupID, matchupIndex);
             sportDataWriter.writeSportData(sportDataWorkbook);
-            i++;
-            if (i > 5) break;
+            matchupIndex++;
+            if (matchupIndex > 5) break;
         }
         sportDataWriter.writeSportData(sportDataWorkbook);
         System.out.print("(11)  Proper Finish...hooray!");

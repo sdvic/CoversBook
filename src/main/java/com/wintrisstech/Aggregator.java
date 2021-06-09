@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210608
+ * version 210609
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellCopyPolicy;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -53,17 +53,15 @@ public class Aggregator
     public XSSFWorkbook buildSportDataUpdate(XSSFWorkbook sportDataWorkbook, String dataEventID, int eventIndex)
     {
         eventIndex += 3;
-        boolean isUdatePresent = true;
         if (sportDataWorkbook.getSheet("Update") == null)
         {
             out.println("Update sheet does not exist...creating new Update sheet in aportDataWorkbook");
-            boolean isUupdatePresent = false;
             sportDataWorkbook.createSheet("Update");
         }
-        //sportDataWorkbook.createSheet("Update");
         updateSheet = sportDataWorkbook.getSheet("Update");
         updateSheet.createRow(eventIndex);
-        updateSheet.setColumnWidth(1, 25 * 256);
+        updateSheet.setColumnWidth(0, 20 * 256);
+        updateSheet.setColumnWidth(1, 13 * 256);
         CellStyle myStyle = sportDataWorkbook.createCellStyle();
         Font myFont = sportDataWorkbook.createFont();
         myFont.setBold(true);

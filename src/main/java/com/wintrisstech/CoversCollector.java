@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210608
+ * version 210609
  * Builds data event id array and calendar date array
  *******************************************************************/
 import org.jsoup.nodes.Element;
@@ -36,6 +36,23 @@ class DataCollector
     private HashMap<String, String> ouOversMap = new HashMap<>();
     private String thisWeek;
     private Elements thisWeekMatchupIdElements;
+
+    public void collectThisWeek(Elements nflRandomElements)//e.g all week dates for the 2021-2022 season
+    {
+        thisGameWeekNumbers = new ArrayList<String>();
+        thisWeekGameDates = new ArrayList<String>();
+        Elements cmg_week_filter_dropdown = nflRandomElements.select("#cmg_week_filter_dropdown");
+        Elements options = cmg_week_filter_dropdown.select("Option");
+        System.out.println("******************************************This week dates/week numbers");
+        int i = 0;
+        for (Element e : options)
+        {
+            thisGameWeekNumbers.add(e.text());//e.g.Week 1, Week 2
+            thisWeekGameDates.add(e.val());//e.g. 2021-08-05, 2021-08-12
+            System.out.println("date => " + e.val() + " week =>" + e.text());
+            i++;
+        }
+    }
     public void collectThisWeekMatchups(Elements thisWeekElements)
     {
         thisWeekMatchupIdElements = thisWeekElements.select(".cmg_matchup_game_box");
@@ -45,6 +62,9 @@ class DataCollector
             homeTeam = e.attr("data-home-team-fullname-search");
             thisMatchupID = e.attr("data-event-id");
             gameDate = e.attr("data-game-date");
+            String[] gameDateTime = gameDate.split(" ");
+            gameDate = gameDateTime[0];
+            String gameTime = gameDateTime[1];
             homeTeamScore = e.attr("data-home-score");
             awayTeamScore = e.attr("data-away-score");
             thisWeek = e.attr("data-competition-type");
@@ -60,6 +80,15 @@ class DataCollector
             thisWeekMatchupIDs.add(thisMatchupID);
         }
     }
+    public void collectThisSeason(Elements thisSeasonElements)
+    {
+        ArrayList<String> thisSeasonDates = new ArrayList<>();
+        Elements thisSeason = thisSeasonElements.select(".covers-MatchupFilters-footballDate");
+        for (Element e : thisSeason)
+        {
+            thisSeasonDates.add(e.select("option").val());
+        }
+    }
     public void collectConsensusData(Elements thisMatchupConsensus, String thisMatchupID)
     {
         Elements rightConsensus = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-finalWagersright");
@@ -72,34 +101,6 @@ class DataCollector
         atsAwaysMap.put(thisMatchupID, atsHome);
         ouOversMap.put(thisMatchupID,ouOver);
         ouUndersMap.put(thisMatchupID, ouUnder);
-    }
-    public void collectAllSeasonDates(Elements nflRandomElements)
-    {
-        ArrayList<String> seasonDates = new ArrayList<String>();
-        ArrayList<String> seasonCodes = new ArrayList<String>();
-        Elements cmg_season_dropdown = nflRandomElements.select("#cmg_season_dropdown");
-        Elements options = cmg_season_dropdown.select("Option");
-        int i = 0;
-        for (Element e : options)
-        {
-            seasonDates.add(e.text());
-            seasonCodes.add(e.val());
-            i++;
-        }
-    }
-    public void collectThisSeasonWeeks(Elements nflRandomElements)
-    {
-        thisGameWeekNumbers = new ArrayList<String>();
-        thisWeekGameDates = new ArrayList<String>();
-        Elements cmg_week_filter_dropdown = nflRandomElements.select("#cmg_week_filter_dropdown");
-        Elements options = cmg_week_filter_dropdown.select("Option");
-        int i = 0;
-        for (Element e : options)
-        {
-            thisGameWeekNumbers.add(e.text());
-            thisWeekGameDates.add(e.val());
-            i++;
-        }
     }
 
     public ArrayList<String> getThisWeekMatchupIDs()

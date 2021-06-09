@@ -12,12 +12,8 @@
     <list default="true" id="b2c3da40-7b61-4401-afb6-59cd422b2e8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/my-project-name.iws" beforeDir="false" afterPath="$PROJECT_DIR$/my-project-name.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Aggregator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Aggregator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/DataCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/CoversCollector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/CoversCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/CoversCollector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/WebSiteReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/WebSiteReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +58,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -357,7 +354,9 @@
       <workItem from="1623116230473" duration="3507000" />
       <workItem from="1623169879615" duration="580000" />
       <workItem from="1623171335925" duration="2437000" />
-      <workItem from="1623173835159" duration="4416000" />
+      <workItem from="1623173835159" duration="8058000" />
+      <workItem from="1623208129771" duration="6260000" />
+      <workItem from="1623252048662" duration="698000" />
     </task>
     <task id="LOCAL-00001" summary="Keith fix version 210208A">
       <created>1612851099413</created>
@@ -611,7 +610,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623100794099</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="version 210608 Updated sheet heading...index error.">
+      <created>1623183700856</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1623183700856</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,7 +639,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="version 210405&#10;Both NFL week dates and event IDs in arrays!" />
     <MESSAGE value="version 210409&#10;Succssfully building NFL Weeks Array/Data Event ID Array" />
     <MESSAGE value="version 210409&#10;Succssfully building NFL Week Array/Data Event ID Array" />
     <MESSAGE value="version 210409&#10;Succssfully building NFL Week Array/Data Event ID Arrays" />
@@ -658,7 +663,8 @@
     <MESSAGE value="version 210604...Loading SportData update sheet with teams/dates/OU/ATS" />
     <MESSAGE value="version 210606 working...start update at row 3." />
     <MESSAGE value="version 210607 Check for void Update sheet" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 210607 Check for void Update sheet" />
+    <MESSAGE value="version 210608 Updated sheet heading...index error." />
+    <option name="LAST_COMMIT_MESSAGE" value="version 210608 Updated sheet heading...index error." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
