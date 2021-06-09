@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210609
+ * version 210609A
  * Builds data event id array and calendar date array
  *******************************************************************/
 import org.jsoup.nodes.Element;
@@ -84,9 +84,16 @@ class DataCollector
     {
         ArrayList<String> thisSeasonDates = new ArrayList<>();
         Elements thisSeason = thisSeasonElements.select(".covers-MatchupFilters-footballDate");
-        for (Element e : thisSeason)
+        Elements dates = thisSeason.select("option");
+        int i = 0;
+        for (Element e : dates)
         {
-            thisSeasonDates.add(e.select("option").val());
+            System.out.println(e.val());
+            i++;
+        }
+        for (String s : thisSeasonDates)
+        {
+            System.out.println(s);
         }
     }
     public void collectConsensusData(Elements thisMatchupConsensus, String thisMatchupID)

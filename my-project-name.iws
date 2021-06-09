@@ -11,9 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b2c3da40-7b61-4401-afb6-59cd422b2e8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/my-project-name.iws" beforeDir="false" afterPath="$PROJECT_DIR$/my-project-name.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Aggregator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Aggregator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/CoversCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/CoversCollector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -356,7 +354,8 @@
       <workItem from="1623171335925" duration="2437000" />
       <workItem from="1623173835159" duration="8058000" />
       <workItem from="1623208129771" duration="6260000" />
-      <workItem from="1623252048662" duration="698000" />
+      <workItem from="1623252048662" duration="981000" />
+      <workItem from="1623260286091" duration="901000" />
     </task>
     <task id="LOCAL-00001" summary="Keith fix version 210208A">
       <created>1612851099413</created>
@@ -617,7 +616,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623183700856</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="version 210609 Good column 0/1 widths.">
+      <created>1623253024037</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1623253024037</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -639,7 +645,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="version 210409&#10;Succssfully building NFL Weeks Array/Data Event ID Array" />
     <MESSAGE value="version 210409&#10;Succssfully building NFL Week Array/Data Event ID Array" />
     <MESSAGE value="version 210409&#10;Succssfully building NFL Week Array/Data Event ID Arrays" />
     <MESSAGE value="version 210409&#10;Succssfully building both NFL Week Array/Data Event ID Arrays" />
@@ -664,7 +669,8 @@
     <MESSAGE value="version 210606 working...start update at row 3." />
     <MESSAGE value="version 210607 Check for void Update sheet" />
     <MESSAGE value="version 210608 Updated sheet heading...index error." />
-    <option name="LAST_COMMIT_MESSAGE" value="version 210608 Updated sheet heading...index error." />
+    <MESSAGE value="version 210609 Good column 0/1 widths." />
+    <option name="LAST_COMMIT_MESSAGE" value="version 210609 Good column 0/1 widths." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

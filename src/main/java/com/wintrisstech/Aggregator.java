@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210609
+ * version 210609A
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellCopyPolicy;
 import org.apache.poi.ss.usermodel.CellStyle;
