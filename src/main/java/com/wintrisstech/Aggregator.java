@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210609A
+ * version 210610
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellCopyPolicy;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -50,16 +50,17 @@ public class Aggregator
     private String atsAway;
     private HashMap<String, String> ouOversMap;
     private HashMap<String, String> ouUndersMap;
-    public XSSFWorkbook buildSportDataUpdate(XSSFWorkbook sportDataWorkbook, String dataEventID, int eventIndex)
+    private int masterIndex;
+    public XSSFWorkbook buildSportDataUpdate(XSSFWorkbook sportDataWorkbook, String dataEventID, int weekIndex, int eventIndex)
     {
-        eventIndex += 3;
+        this.masterIndex = weekIndex + eventIndex + 3;
         if (sportDataWorkbook.getSheet("Update") == null)
         {
             out.println("Update sheet does not exist...creating new Update sheet in aportDataWorkbook");
             sportDataWorkbook.createSheet("Update");
         }
         updateSheet = sportDataWorkbook.getSheet("Update");
-        updateSheet.createRow(eventIndex);
+        updateSheet.createRow(masterIndex);
         updateSheet.setColumnWidth(0, 20 * 256);
         updateSheet.setColumnWidth(1, 13 * 256);
         CellStyle myStyle = sportDataWorkbook.createCellStyle();
@@ -75,25 +76,25 @@ public class Aggregator
         atsAway = atsAwaysMap.get(dataEventID);
         ouOver = ouOversMap.get(dataEventID);
         ouUnder = ouUndersMap.get(dataEventID);
-        out.println("................................ "+ (eventIndex -5) + " " + dataEventID + " " + homeTeam + " " + awayTeam + " " + thisMatchupDate + " " + atsHome + " " + atsAway + " " + ouOver + " " + ouUnder);
-        updateSheet.getRow(eventIndex).createCell(0);
-        updateSheet.getRow(eventIndex).getCell(0).setCellStyle(myStyle);
-        updateSheet.getRow(eventIndex).getCell(0).setCellValue(awayTeam + " @ " + homeTeam);
-        updateSheet.getRow(eventIndex).createCell(1);
-        updateSheet.getRow(eventIndex).getCell(1).setCellStyle(myStyle);
-        updateSheet.getRow(eventIndex).getCell(1).setCellValue(thisMatchupDate);
-        updateSheet.getRow(eventIndex).createCell(59);
-        updateSheet.getRow(eventIndex).getCell(59).setCellStyle(myStyle);
-        updateSheet.getRow(eventIndex).getCell(59).setCellValue(atsHome);
-        updateSheet.getRow(eventIndex).createCell(61);
-        updateSheet.getRow(eventIndex).getCell(61).setCellStyle(myStyle);
-        updateSheet.getRow(eventIndex).getCell(61).setCellValue(atsAway);
-        updateSheet.getRow(eventIndex).createCell(64);
-        updateSheet.getRow(eventIndex).getCell(64).setCellStyle(myStyle);
-        updateSheet.getRow(eventIndex).getCell(64).setCellValue(ouOver);
-        updateSheet.getRow(eventIndex).createCell(66);
-        updateSheet.getRow(eventIndex).getCell(66).setCellStyle(myStyle);
-        updateSheet.getRow(eventIndex).getCell(66).setCellValue(ouUnder);
+        out.println("................................ "+ masterIndex + " " + dataEventID + " " + homeTeam + " " + awayTeam + " " + thisMatchupDate + " " + atsHome + " " + atsAway + " " + ouOver + " " + ouUnder);
+        updateSheet.getRow(masterIndex).createCell(0);
+        updateSheet.getRow(masterIndex).getCell(0).setCellStyle(myStyle);
+        updateSheet.getRow(masterIndex).getCell(0).setCellValue(awayTeam + " @ " + homeTeam);
+        updateSheet.getRow(masterIndex).createCell(1);
+        updateSheet.getRow(masterIndex).getCell(1).setCellStyle(myStyle);
+        updateSheet.getRow(masterIndex).getCell(1).setCellValue(thisMatchupDate);
+        updateSheet.getRow(masterIndex).createCell(59);
+        updateSheet.getRow(masterIndex).getCell(59).setCellStyle(myStyle);
+        updateSheet.getRow(masterIndex).getCell(59).setCellValue(atsHome);
+        updateSheet.getRow(masterIndex).createCell(61);
+        updateSheet.getRow(masterIndex).getCell(61).setCellStyle(myStyle);
+        updateSheet.getRow(masterIndex).getCell(61).setCellValue(atsAway);
+        updateSheet.getRow(masterIndex).createCell(64);
+        updateSheet.getRow(masterIndex).getCell(64).setCellStyle(myStyle);
+        updateSheet.getRow(masterIndex).getCell(64).setCellValue(ouOver);
+        updateSheet.getRow(masterIndex).createCell(66);
+        updateSheet.getRow(masterIndex).getCell(66).setCellStyle(myStyle);
+        updateSheet.getRow(masterIndex).getCell(66).setCellValue(ouUnder);
         XSSFRow srcRow = sportDataWorkbook.getSheet("Sheet1").getRow(0);//copyRowFrom() workaround
         XSSFRow destRow = (XSSFRow) updateSheet.createRow(1);
         destRow.copyRowFrom(srcRow, new CellCopyPolicy());
